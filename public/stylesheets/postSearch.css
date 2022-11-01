@@ -1,0 +1,136 @@
+.info .body {
+  position: relative;
+  overflow: hidden;
+}
+
+.info .desc {
+  position: relative;
+  margin: 8px 0 0 90px;
+  height: 75px;
+  display: block;
+}
+
+.map_wrap,
+.map_wrap * {
+  margin: 0;
+  padding: 0;
+}
+
+#menu_wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* 구식 브라우저를 위한 대비책(fallback) */
+  max-width: 480px;
+  min-width: 240px;
+  height: 216px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-y: auto;
+  background-color: white;
+  z-index: 10000;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+#searchedAreaPlaceList {
+  height: 100%;
+  width: 100%;
+}
+
+#searchedAreaPlaceList_title {
+  display: flex;
+  position: sticky;
+  top: 0;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.15);
+
+  z-index: 10000;
+}
+
+#searched_list_close {
+  font-size: 20px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.searched-data-length {
+  text-align: center;
+  height: 36px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.7);
+  padding-left: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.searchedAreaPlaceItem {
+  position: relative;
+  height: auto;
+  width: 100%;
+  box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  cursor: pointer;
+  width: 100%;
+}
+
+.searchedAreaPlace_info {
+  padding: 8px 20px;
+}
+.searchedAreaPlace_info_title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  margin-top: 8px;
+}
+
+.searchedAreaPlace_info_address_road {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 2px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.searchedAreaPlace_info_address {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 2px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.searchedAreaPlace_info_contact {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(25, 74, 167, 0.94);
+  margin-bottom: 8px;
+}
+
+@media (min-width: 480px) {
+  #menu_wrap {
+    top: 120px;
+    left: 12px;
+    width: 240px;
+    height: calc(100vh - 120px - 12px);
+    border-radius: 4px;
+  }
+}

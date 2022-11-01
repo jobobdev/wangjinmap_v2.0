@@ -1,0 +1,84 @@
+/* --------------------전화번호 복사 CSS---------------------*/
+
+.notification-container {
+  background: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  height: 20px;
+  width: 180px;
+  position: absolute;
+  font-size: 15px;
+  font-weight: 600;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 10px 15px;
+  transition: transform 0.3s ease-in-out;
+  display: none;
+  z-index: 9999;
+}
+
+.notification-container.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --------------------모달 CSS---------------------*/
+
+#modal.modal-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+  z-index: 9999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border: 1px solid rgba(0, 0, 0, 0.18);
+}
+#modal .modal-window {
+  background: white;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  border-radius: 4px;
+  width: auto;
+  height: auto;
+  position: relative;
+  top: -100px;
+  padding: 16px 16px 8px 16px;
+}
+#modal .title {
+  padding-left: 4px;
+  display: inline;
+  color: black;
+}
+#modal .title h2 {
+  display: inline;
+  font-size: 16px;
+}
+#modal .close-area {
+  display: inline;
+  width: fit-content;
+  float: right;
+  padding-right: 4px;
+  cursor: pointer;
+  color: black;
+}
+#modal_close {
+  font-size: 22px;
+}
+#modal .content {
+  margin-top: 12px;
+  font-size: 14px;
+  padding: 0px 4px;
+  color: black;
+}
