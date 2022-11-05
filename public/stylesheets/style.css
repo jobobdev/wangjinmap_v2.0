@@ -367,19 +367,22 @@ li a {
   justify-content: flex-start;
   align-items: center;
   font-weight: 500;
+  cursor: pointer;
 }
 
 #contact {
+  display: flex;
+  justify-content: flex-start;
   font-size: 15px;
   color: rgba(25, 74, 167, 0.94);
 }
 
 .contact_copy {
-  font-size: 11px;
+  font-size: 12px;
   margin-left: 5px;
   color: rgba(4, 19, 47, 0.7);
 }
 
-.fa-copy {
+.fa-phone {
   margin-left: 2px;
 }

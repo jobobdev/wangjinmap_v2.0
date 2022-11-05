@@ -168,7 +168,7 @@ $(async function () {
       <div class="infowindow_title">${target.title}</div>
       <div class="infowindow_department">${target.department}</div>
       <div class="infowindow_address_road">${target.address_road}</div>
-      <div class="infowindow_contact" onclick="copyToClipBoard()"><div id="contact">${target.contact}</div><div class="contact_copy">복사<i class="fa-regular fa-copy"></i></div></div>
+      <div class="infowindow_contact" onclick="copyToClipBoard()"><a id="contact" onclick="phoneCall()">${target.contact}<div class="contact_copy"><i class="fa-solid fa-phone"></i></div></a></div>
       </div>`;
 
       const infowindow = new naver.maps.InfoWindow({
@@ -185,6 +185,13 @@ $(async function () {
     for (let i = 0, ii = markerList.length; i < ii; i++) {
       naver.maps.Event.addListener(markerList[i], "click", getClickHandler(i));
       naver.maps.Event.addListener(map, "click", getClickMap(i));
+      naver.maps.Event.addListener(map, "zoom_changed", function (zoom) {
+        console.log(zoom);
+        if (zoom <= 14) {
+          const infowindow = infowindowList[i];
+          infowindow.close();
+        }
+      });
     }
 
     // 마커 클러스터링 설정
@@ -323,6 +330,12 @@ function copyToClipBoard() {
 
 function closeSearchedAreaList() {
   document.getElementById("menu_wrap").style.display = "none";
+}
+
+function phoneCall() {
+  const clinicContact = document.getElementById("contact").innerText;
+  location.herf = "tel:" + clinicContact;
+  console.log(clinicContact);
 }
 
 // async function locateUserOnMap() {

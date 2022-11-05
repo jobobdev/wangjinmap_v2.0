@@ -167,7 +167,7 @@ $(async function () {
     <div class="infowindow_title">${target.title}</div>
     <div class="infowindow_department">${target.department}</div>
     <div class="infowindow_address_road">${target.address_road}</div>
-    <div class="infowindow_contact" onclick="copyToClipBoard()"><div id="contact">${target.contact}</div><div class="contact_copy">복사<i class="fa-regular fa-copy"></i></div></div>
+    <div class="infowindow_contact"><a id="contact" onclick="phoneCall()">${target.contact}<div class="contact_copy"><i class="fa-solid fa-phone"></i></div></a></div>
     </div>`;
 
       const infowindow = new naver.maps.InfoWindow({
@@ -184,6 +184,13 @@ $(async function () {
     for (let i = 0, ii = markerList.length; i < ii; i++) {
       naver.maps.Event.addListener(markerList[i], "click", getClickHandler(i));
       naver.maps.Event.addListener(map, "click", getClickMap(i));
+      naver.maps.Event.addListener(map, "zoom_changed", function (zoom) {
+        console.log(zoom);
+        if (zoom <= 14) {
+          const infowindow = infowindowList[i];
+          infowindow.close();
+        }
+      });
     }
 
     // 마커 클러스터링 설정
@@ -306,80 +313,25 @@ modal.addEventListener("click", (e) => {
   }
 });
 
-function copyToClipBoard() {
-  const contactToCopy = document.getElementById("contact");
-  window.navigator.clipboard
-    .writeText(contactToCopy.innerText.replace(/-/g, ""))
-    .then(() => {
-      const notification = document.getElementById("notification-container");
-      notification.classList.add("show");
-      setTimeout(() => {
-        notification.classList.remove("show");
-      }, 2000);
-    });
-}
+// function copyToClipBoard() {
+//   const contactToCopy = document.getElementById("contact");
+//   window.navigator.clipboard
+//     .writeText(contactToCopy.innerText.replace(/-/g, ""))
+//     .then(() => {
+//       const notification = document.getElementById("notification-container");
+//       notification.classList.add("show");
+//       setTimeout(() => {
+//         notification.classList.remove("show");
+//       }, 2000);
+//     });
+// }
 
 function closeSearchedAreaList() {
   document.getElementById("menu_wrap").style.display = "none";
 }
 
-// async function locateUserOnMap() {
-//   let result;
-//   try {
-//     result = await geoLocation();
-//     initialLat = result.coords.latitude;
-//     initialLng = result.coords.longitude;
-//     currentMarker = true;
-//   } catch (err) {
-//     alert(err);
-//     initialLat = 37.5665;
-//     initialLng = 126.9779;
-//     currentMarker = false;
-//   }
-
-//   mapOptions = {
-//     center: new naver.maps.LatLng(initialLat, initialLng),
-//     zoom: 16,
-//     minZoon: 7,
-//     zoomControl: true,
-//     mapTypeControl: true,
-//     pinchZoon: true,
-//     tileTransition: true,
-//     zoomControlOptions: {
-//       position: naver.maps.Position.RIGHT_CENTER,
-//       style: naver.maps.ZoomControlStyle.SMALL,
-//     },
-//     mapTypeControlOptions: {
-//       position: naver.maps.Position.BOTTOM_RIGHT,
-//     },
-//   };
-//   map = new naver.maps.Map("map", mapOptions);
-
-//   let client_position = [];
-//   // variable used to prevent overlapping marker for current position
-//   let currentUse = true;
-//   const userInitialLocation = new naver.maps.LatLng(initialLat, initialLng);
-//   // put a marker of the user's current location only when the location is taken successfully
-//   if (currentUse && currentMarker) {
-//     marker = new naver.maps.Marker({
-//       map: map,
-//       position: userInitialLocation,
-//       title: "내 위치",
-//       icon: {
-//         content:
-//           '<div class="current_marker_out"><div class="current_marker_in"></div></div>',
-//       },
-//     });
-//     // preventing overlapping markers
-//     if (client_position.length == 0) {
-//       client_position.push(marker);
-//     } else {
-//       let pre_marker = client_position.splice(0, 1);
-//       pre_marker[0].setMap(null);
-//     }
-//     currentUse = false;
-//   }
-//   map.setZoom(16, false);
-//   map.panTo(userInitialLocation);
-//   console.log(currentUse);
-// }
+function phoneCall() {
+  const clinicContact = document.getElementById("contact").innerText;
+  location.herf = "tel:" + clinicContact;
+  console.log(clinicContact);
+}
