@@ -168,7 +168,7 @@ $(async function () {
       <div class="infowindow_title">${target.title}</div>
       <div class="infowindow_department">${target.department}</div>
       <div class="infowindow_address_road">${target.address_road}</div>
-      <div class="infowindow_contact" onclick="copyToClipBoard()"><a id="contact" onclick="phoneCall()">${target.contact}<div class="contact_copy"><i class="fa-solid fa-phone"></i></div></a></div>
+      <div class="infowindow_contact"><a id="contact" onclick="phoneCall()">${target.contact}<div class="contact_copy"><i class="fa-solid fa-phone"></i></div></a></div>
       </div>`;
 
       const infowindow = new naver.maps.InfoWindow({
@@ -315,18 +315,18 @@ modal.addEventListener("click", (e) => {
   }
 });
 
-function copyToClipBoard() {
-  const contactToCopy = document.getElementById("contact");
-  window.navigator.clipboard
-    .writeText(contactToCopy.innerText.replace(/-/g, ""))
-    .then(() => {
-      const notification = document.getElementById("notification-container");
-      notification.classList.add("show");
-      setTimeout(() => {
-        notification.classList.remove("show");
-      }, 2000);
-    });
-}
+// function copyToClipBoard() {
+//   const contactToCopy = document.getElementById("contact");
+//   window.navigator.clipboard
+//     .writeText(contactToCopy.innerText.replace(/-/g, ""))
+//     .then(() => {
+//       const notification = document.getElementById("notification-container");
+//       notification.classList.add("show");
+//       setTimeout(() => {
+//         notification.classList.remove("show");
+//       }, 2000);
+//     });
+// }
 
 function closeSearchedAreaList() {
   document.getElementById("menu_wrap").style.display = "none";
