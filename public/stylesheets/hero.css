@@ -36,7 +36,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
-  gap: 10px;
   margin-top: 20px;
   margin-bottom: 10px;
 }
@@ -53,7 +52,7 @@
   width: 100%;
   min-width: 150px;
   height: 50px;
-  border-radius: 35px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,15 +61,19 @@
   font-weight: 700;
 
   cursor: pointer;
-  color: black;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  color: rgba(0, 0, 0, 0.7);
+  /* box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px; */
 }
 
 .clinic-btn {
-  background: rgb(147, 178, 225);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 .clinic-km-btn {
-  background: rgb(242, 188, 80);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 #to-map-marker-m {
