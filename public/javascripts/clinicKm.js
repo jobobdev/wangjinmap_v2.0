@@ -332,6 +332,6 @@ function closeSearchedAreaList() {
 
 function phoneCall() {
   const clinicContact = document.getElementById("contact").innerText;
-  location.herf = "tel:" + clinicContact;
+  location.href = "tel:" + clinicContact;
   console.log(clinicContact);
 }
