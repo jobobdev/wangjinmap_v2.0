@@ -15,33 +15,6 @@ router.get("/map/clinics-km", (req, res, next) => {
   res.render("clinic-km", { title: "Express" });
 });
 
-router.get("/upload", (req, res, next) => {
-  res.render("upload");
-});
-
-/* upload 등록 기능 ▼
-router.post("/location, (req, res, next) => {
-  const { title, address, lat, lng } = req.body;
-  let = location = new locationModel();
-  location.title = title;
-  location.address = address;
-  location.lat = lat;
-  location.lng = lng;
-  // mongodb에 저장하기
-  location.save().then((result) => {
-    console.log(result);
-    res.json({
-      message: "success",
-    });
-  }).catch(error=>{
-    console.log(error)
-    res.json({
-      message: "error",
-    })
-  })
-});
-*/
-
 // mongodb에 저장되어있는 데이터를 main.js에서 사용할 수 있도록 하는 함수 ▼
 router.get("/clinic", (req, res, next) => {
   // id와 v값은 제외

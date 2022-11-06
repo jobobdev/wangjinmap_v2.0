@@ -124,8 +124,9 @@ li a {
 }
 /* --------------------nav 타이틀 CSS---------------------*/
 #nav_bar_wrap {
+  /* nav bar는 아니고 지도 맵 검색창 위치임 */
   position: absolute;
-  height: 40px;
+  height: 44px;
   width: 480px;
   min-width: 165px;
   display: flex;
@@ -139,8 +140,7 @@ li a {
 #layer {
   position: absolute;
 
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
-    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   border-radius: 4px;
 }
 
@@ -173,7 +173,6 @@ li a {
 @media (max-width: 480px) {
   #nav_bar_wrap {
     width: calc(100% - 24px);
-    top: 20px;
     left: 0;
     right: 0;
   }
@@ -183,6 +182,9 @@ li a {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+      rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+      rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
   }
 }
 
@@ -194,8 +196,9 @@ li a {
   align-items: center;
   background-color: white;
   border-radius: 4px;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
-    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }
 .fa-chevron-left {
   margin-right: 5px;
@@ -230,7 +233,7 @@ li a {
   height: 30px;
   background-color: none;
   border: none;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: normal;
   cursor: pointer;
   color: rgba(0, 0, 0, 0.7);
@@ -279,7 +282,7 @@ li a {
 
 #current {
   position: absolute;
-  top: 68px;
+  top: 79px;
   left: 12px;
   height: 40px;
   width: 40px;
@@ -291,8 +294,9 @@ li a {
   border-radius: 4px;
   background-color: white;
   cursor: pointer;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
-    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
   z-index: 999;
   transition-duration: 0.1s;
   -webkit-transition-duration: 0.1s;
