@@ -272,21 +272,18 @@ li a {
 
 #current {
   position: absolute;
-  top: 79px;
-  left: 12px;
-  height: 40px;
-  width: 40px;
+  top: calc(50% - 64px);
+  right: 10px;
+  height: 28px;
+  width: 28px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: rgba(0, 0, 0, 0.7);
   user-select: none;
-  border-radius: 4px;
   background-color: white;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
-    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
-    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  border: 1px solid rgba(0, 0, 0, 0.8);
   z-index: 999;
   transition-duration: 0.1s;
   -webkit-transition-duration: 0.1s;
@@ -298,7 +295,8 @@ li a {
 }
 
 .fa-crosshairs {
-  font-size: 18px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
   z-index: 9999;
 }
 

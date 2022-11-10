@@ -34,7 +34,7 @@ $(async function () {
     zoom: 16,
     minZoon: 7,
     zoomControl: true,
-    mapTypeControl: true,
+    mapTypeControl: false,
     logoControl: false,
     mapDataControl: false,
     pinchZoon: true,
