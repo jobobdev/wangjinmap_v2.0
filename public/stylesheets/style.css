@@ -127,7 +127,7 @@ li a {
   /* nav bar는 아니고 지도 맵 검색창 위치임 */
   position: absolute;
   height: 44px;
-  width: 480px;
+  width: 456px;
   min-width: 165px;
   display: flex;
   margin: 0px 12px;
@@ -158,16 +158,6 @@ li a {
   z-index: 1000;
   margin-right: 15px;
   color: rgba(0, 0, 0, 0.7);
-}
-
-@media (max-width: 768px) {
-  #nav_bar_wrap {
-    width: 94%; /* 구식 브라우저를 위한 대비책(fallback) */
-    width: -webkit-calc(100% - 24px); /* for Chrome, Safari */
-    width: -moz-calc(100% - 24px); /* for Firefox */
-    width: calc(100% - 24px);
-    max-width: 480px;
-  }
 }
 
 @media (max-width: 480px) {
