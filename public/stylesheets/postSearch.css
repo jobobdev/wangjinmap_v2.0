@@ -23,7 +23,8 @@
   width: 100%; /* 구식 브라우저를 위한 대비책(fallback) */
   max-width: 480px;
   min-width: 240px;
-  height: 216px;
+  height: fit-content;
+  max-height: 216px;
   margin-left: auto;
   margin-right: auto;
   overflow-y: auto;
