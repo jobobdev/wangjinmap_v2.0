@@ -48,6 +48,26 @@ $(async function () {
     },
   };
   map = new naver.maps.Map("map", mapOptions);
+  // zoomControl 생성
+  const zoomControlWrap = document.getElementById("zoomControlWrap");
+  const zoomInButton = document.createElement("div");
+  zoomInButton.setAttribute("id", "zoomInIconDiv");
+  const zoomOutButton = document.createElement("div");
+  zoomOutButton.setAttribute("id", "zoomOutIconDiv");
+  const zoomInIcon = `<i class="fa-solid fa-plus"></i>`;
+  const zoomOutIcon = `<i class="fa-solid fa-minus"></i>`;
+
+  zoomInButton.addEventListener("click", (e) => {
+    map.setZoom(map.getZoom() + 1, true);
+  });
+  zoomOutButton.addEventListener("click", (e) => {
+    map.setZoom(map.getZoom() - 1, true);
+  });
+
+  zoomInButton.innerHTML = zoomInIcon;
+  zoomOutButton.innerHTML = zoomOutIcon;
+  zoomControlWrap.appendChild(zoomInButton);
+  zoomControlWrap.appendChild(zoomOutButton);
 
   // 현위치 표기를 위한 함수 ▼
   let client_position = [];
