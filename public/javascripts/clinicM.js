@@ -119,7 +119,7 @@ $(async function () {
     type: "GET",
   }).done((response) => {
     if (response.message !== "success") return;
-    const clinicData = response.data.filter((el) => el.sort == "양의");
+    const clinicData = response.data.filter((el) => el.sort == "의원");
 
     postCodeSearch(clinicData);
 
