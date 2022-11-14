@@ -33,7 +33,7 @@ $(async function () {
     center: new naver.maps.LatLng(initialLat, initialLng),
     zoom: 16,
     minZoon: 7,
-    zoomControl: true,
+    zoomControl: false,
     mapTypeControl: false,
     logoControl: false,
     mapDataControl: false,

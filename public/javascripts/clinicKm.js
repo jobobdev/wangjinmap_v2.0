@@ -33,16 +33,12 @@ $(async function () {
     center: new naver.maps.LatLng(initialLat, initialLng),
     zoom: 16,
     minZoon: 7,
-    zoomControl: true,
+    zoomControl: false,
     mapTypeControl: false,
     logoControl: false,
     mapDataControl: false,
     pinchZoon: true,
     tileTransition: true,
-    zoomControlOptions: {
-      position: naver.maps.Position.RIGHT_CENTER,
-      style: naver.maps.ZoomControlStyle.SMALL,
-    },
     mapTypeControlOptions: {
       position: naver.maps.Position.LEFT_BOTTOM,
     },
