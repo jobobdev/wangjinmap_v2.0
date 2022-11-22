@@ -93,26 +93,22 @@ ul {
   justify-content: flex-start;
 }
 
-li {
-  float: left;
-  width: fit-content;
+#navbar {
+  position: absolute;
+  top: 0;
+  height: 46px;
+  padding-left: 16px;
+  align-items: center;
 }
-li a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  text-align: left;
-  padding: 8px 16px;
+
+#navbar li {
+  height: 36px;
 }
 
 #nav_bar_logo {
-  width: 120px;
-  margin-top: 8px;
+  height: 100%;
 }
 
-.active {
-  background-color: green;
-}
 #root {
   padding: 0px;
   margin: 0px;
