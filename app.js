@@ -14,6 +14,13 @@ var app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+app.get("/robots.txt", (req, res) => {
+  res.type("text/plain");
+  res.send(
+    "User-agent: *\nDisallow: /upload/\nUser-agent: Googlebot\nUser-agent: Yeti\nUser-agent: Daum\nUser-agent: Bingbot\nUser-agent: DuckDuckBot\nAllow: /\nSitemap: https://www.connectvillages.com/sitemap.xml"
+  );
+});
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
