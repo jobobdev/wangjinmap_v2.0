@@ -48,9 +48,10 @@
 #modal .modal-window {
   background: white;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
-    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
-  border-radius: 4px;
-  width: auto;
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  border-radius: 16px;
+  border: 2px solid #3d84eb;
+  width: 312px;
   height: auto;
   position: relative;
   top: -100px;
@@ -59,11 +60,11 @@
 #modal .title {
   padding-left: 4px;
   display: inline;
-  color: black;
+  color: #3d84eb;
 }
 #modal .title h2 {
   display: inline;
-  font-size: 16px;
+  font-size: 18px;
 }
 #modal .close-area {
   display: inline;
@@ -74,11 +75,12 @@
   color: black;
 }
 #modal_close {
-  font-size: 22px;
+  font-size: 20px;
 }
 #modal .content {
   margin-top: 12px;
-  font-size: 14px;
+  text-align: justify;
+  font-size: 16px;
   padding: 0px 4px;
-  color: black;
+  color: #333;
 }

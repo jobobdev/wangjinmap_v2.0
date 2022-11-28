@@ -1,0 +1,275 @@
+#hero-wrap {
+  padding: 0px;
+  margin: 0px;
+  width: 100vw;
+
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0);
+  display: grid;
+  grid-template-rows: 3.5fr 6.5fr;
+  align-items: center;
+  justify-content: center;
+}
+
+#hero {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-title {
+  height: 75%;
+  min-height: 100px;
+  display: flex;
+  width: 100%;
+  /* text-align: center; */
+  justify-content: flex-start;
+  align-items: flex-end;
+  font-size: 20px;
+  font-size: 2em;
+  font-family: "Noto Sans KR", sans-serif;
+  margin-bottom: 16px;
+  font-weight: 700;
+  color: #333;
+}
+
+.button-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  width: 100%;
+  height: 25%;
+
+  /* margin-top: 20px;
+    margin-bottom: 10px; */
+  /* display: flex; */
+
+  height: 54px;
+  margin-bottom: 16px;
+}
+
+.button-wrap > a {
+  text-decoration: none;
+  color: white;
+}
+.button-wrap > a:active {
+  color: white;
+}
+
+.to-map {
+  width: 100%;
+  min-width: 150px;
+  max-width: 216px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+
+  cursor: pointer;
+  color: #333;
+  /* box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px; */
+}
+
+.clinic-btn {
+  border-radius: 6px;
+  border: 1px solid #3d84eb;
+}
+.clinic-km-btn {
+  border-radius: 6px;
+  border: 1px solid #db4e31;
+}
+
+#to-map-marker-m {
+  width: 36px;
+  height: auto;
+  margin-right: 4px;
+}
+
+#to-map-marker-km {
+  width: 36px;
+  height: auto;
+  margin-right: 4px;
+}
+
+#hero-info {
+  width: 420px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.hero-sub {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 500;
+  width: 100%;
+  height: 100%;
+  margin-top: 16px;
+}
+.hero-sub span {
+  font-size: 22px;
+  font-weight: 600;
+
+  line-height: 1.7rem;
+  text-align: center;
+}
+
+.hero-sub p {
+  text-align: justify;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+.info-marker-container {
+  display: flex;
+  justify-content: center;
+  width: 260px;
+  height: 40px;
+  min-width: 260px;
+  max-width: 340px;
+}
+.clinic-num {
+  grid-area: "title";
+}
+
+#m-info,
+#km-info {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: 500;
+}
+
+#m-info > span,
+#km-info > span {
+  margin-left: 4px;
+}
+
+#m-info span:last-child,
+#km-info span:last-child {
+  margin-left: 8px;
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  height: 130px;
+
+  background-color: #444;
+}
+
+@media (min-width: 768px) {
+  #hero {
+    width: 420px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+  .to-map {
+    font-size: 21px;
+  }
+
+  .info-marker-container {
+    width: 300px;
+  }
+  #m-info,
+  #km-info {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 1.84rem;
+  }
+  #hero-info {
+    width: 330px;
+  }
+  .hero-sub span {
+    font-size: 20px;
+  }
+
+  .hero-sub p {
+    font-size: 15px;
+  }
+  .to-map {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  #hero-info {
+    width: 310px;
+  }
+
+  .hero-title {
+    font-size: 1.64rem;
+  }
+  .hero-sub span {
+    font-size: 19px;
+  }
+
+  .hero-sub p {
+    font-size: 14px;
+  }
+  .to-map {
+    font-size: 18px;
+  }
+  .info-marker-container {
+    font-size: 12px;
+  }
+}
+
+.team-info {
+  width: 70%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-weight: 400;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.copyright {
+  width: 70%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  margin-bottom: 13px;
+  color: rgba(173, 173, 173, 0.7);
+}
+
+.hero-illust {
+  width: 100%;
+  background-image: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#hero-illust-svg {
+  width: 86%;
+}

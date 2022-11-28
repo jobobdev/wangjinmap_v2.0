@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    />
+    <!-- social media share meta -->
+    <meta property="og:title" content="똑똑의사 | 왕진병원지도" />
+    <meta property="og:image" content="/images/meta-image.png" />
+    <meta
+      property="og:description"
+      content="내 주변 왕진병원을 지도에서 쉽게 찾아보세요!"
+    />
+    <meta property="og:url" content="https://www.connectvillages.com" />
+    <meta
+      name="Keywords"
+      content="왕진, 왕진병원, 시범사업, 일차의료 방문진료 수가 시범사업, 수가 시범사업, 일차의료, 방문진료, 똑똑의사, 똑똑, 의사"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Reply-To" content="admin@connectvillages.com" />
+    <meta http-equiv="Copyright" content="Connect Villages" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <title>똑똑의사 | 왕진병원지도</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="shortcut icon" href="/images/favicon-mobile.png" />
+    <link rel="apple-touch-icon" href="/images/favicon-mobile.png" />
+    <link rel="favicon" href="/images/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap&subset=korean&text=담당업무"
+      rel="stylesheet"
+    />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-YQH4Z8ZX3Q"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-YQH4Z8ZX3Q");
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <ul id="navbar">
+      <li>
+        <a href="/"
+          ><img src="/images/knockdoc_logo.png" id="nav_bar_logo"
+        /></a>
+      </li>
+    </ul>
+    <div id="hero-wrap">
+      <div id="hero">
+        <div class="hero-title">똑똑의사로<br />왕진병원을 찾아보세요</div>
+
+        <div class="button-wrap">
+          <a href="/map"
+            ><div class="to-map clinic-btn">
+              <img id="to-map-marker-m" src="/images/new_m_marker.png" />의원
+              보기
+            </div></a
+          >
+          <a href="/map/clinics-km"
+            ><div class="to-map clinic-km-btn">
+              <img
+                id="to-map-marker-km"
+                src="/images/new_km_marker.png"
+              />한의원 보기
+            </div></a
+          >
+        </div>
+      </div>
+      <div id="hero-info">
+        <div class="hero-sub">
+          <span>왕진병원을 지도에서 쉽게 찾아보세요!</span>
+          <p>
+            현재 "일차의료 방문진료 수가 시범사업"이 진행중입니다. 전국
+            500여개의 의원과 1300여개의 한의원이 시범사업에 참여하고 있습니다.
+            거동이 불편하시거나 병원 방문이 어려우신 분들은 가정에서 진료를
+            받으실 수 있습니다. 자세한 내용은 지도에서 병원을 찾고 전화로
+            문의하세요.
+          </p>
+          <div class="hero-illust">
+            <img
+              src="/images/undraw_doctors_re_jjho.svg"
+              id="hero-illust-svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="team-info">
+        <span>커넥트빌리지스</span>
+        <span>010-2238-0705</span>
+        <span>admin@connectvillages.com</span>
+      </div>
+      <div class="copyright">
+        &copy; <%= new Date().getFullYear() %> Connect Villages. All rights
+        reserved.
+      </div>
+    </footer>
+  </body>
+</html>

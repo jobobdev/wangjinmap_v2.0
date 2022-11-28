@@ -76,17 +76,22 @@
           <h2>안내</h2>
         </div>
         <div class="close-area">
-          <i class="fa-regular fa-circle-xmark" id="modal_close"></i>
+          <i class="fa-solid fa-x" id="modal_close"></i>
         </div>
         <div class="content">
-          <p>반경 2.5km 안에 왕진 의원이 없습니다.</p>
+          <p>
+            반경 2.5km 안에 왕진 의원이 없습니다. 지도를 축소하여 더 넓은
+            범위에서 찾아보시기 바랍니다.
+          </p>
         </div>
       </div>
     </div>
     <div id="menu_wrap">
       <div id="searchedAreaPlaceList_title"></div>
+      <div id="searchedAreaPlaceList_addr"></div>
       <div id="searchedAreaPlaceList" style="z-index: 9999"></div>
     </div>
+    <div id="show-list-btn" onclick="showClinicList()"></div>
     <div
       id="layer"
       style="
@@ -101,21 +106,20 @@
       </div>
     </div>
     <div id="root">
-      <div id="nav_bar_wrap">
-        <div id="title_search">
-          <div id="title_text">
-            <a class="menu-back" href="/"
-              ><i class="fa-solid fa-chevron-left"></i>의원</a
-            >
-          </div>
+      <div id="search_bar_wrap">
+        <div id="goback-search">
+          <a class="menu-back" href="/"
+            ><i class="fa-solid fa-chevron-left"></i
+          ></a>
+
           <div id="address_search">
             <input
               type="text"
               id="search_input"
-              placeholder="주소 검색"
+              placeholder="도로명/지번 주소를 검색해보세요"
               onfocus="this.blur()"
             />
-            <i id="search_icon" class="fa-solid fa-location-dot"></i>
+            <i id="search_icon" class="fa-solid fa-magnifying-glass"></i>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ router.get("/", (req, res, next) => {
   res.render("home");
 });
 
-router.get("/map/clinics", (req, res, next) => {
+router.get("/map", (req, res, next) => {
   res.render("clinic-m", { title: "Express" });
 });
 

@@ -14,6 +14,8 @@ let infowindowList = [];
 // 사용자 위치를 받아오고 나면 document load하기
 $(async function () {
   let result;
+  let initialLat;
+  let initialLng;
   try {
     result = await geoLocation();
     initialLat = result.coords.latitude;
@@ -28,120 +30,121 @@ $(async function () {
   // 로딩 숨기기
   $.LoadingOverlay("hide");
 
-  // 사용자 위치를 중심으로 맵을 로드하고 마커 찍기
-  mapOptions = {
-    center: new naver.maps.LatLng(initialLat, initialLng),
-    zoom: 16,
-    minZoon: 7,
-    zoomControl: false,
-    mapTypeControl: false,
-    logoControl: false,
-    mapDataControl: false,
-    pinchZoon: true,
-    tileTransition: true,
-    zoomControlOptions: {
-      position: naver.maps.Position.RIGHT_CENTER,
-      style: naver.maps.ZoomControlStyle.SMALL,
-    },
-    mapTypeControlOptions: {
-      position: naver.maps.Position.LEFT_BOTTOM,
-    },
-  };
-  map = new naver.maps.Map("map", mapOptions);
-  // zoomControl 생성
-  const zoomControlWrap = document.getElementById("zoomControlWrap");
-  const zoomInButton = document.createElement("div");
-  zoomInButton.setAttribute("id", "zoomInIconDiv");
-  const zoomOutButton = document.createElement("div");
-  zoomOutButton.setAttribute("id", "zoomOutIconDiv");
-  const zoomInIcon = `<i class="fa-solid fa-plus"></i>`;
-  const zoomOutIcon = `<i class="fa-solid fa-minus"></i>`;
-
-  zoomInButton.addEventListener("click", (e) => {
-    map.setZoom(map.getZoom() + 1, true);
-  });
-  zoomOutButton.addEventListener("click", (e) => {
-    map.setZoom(map.getZoom() - 1, true);
-  });
-
-  zoomInButton.innerHTML = zoomInIcon;
-  zoomOutButton.innerHTML = zoomOutIcon;
-  zoomControlWrap.appendChild(zoomInButton);
-  zoomControlWrap.appendChild(zoomOutButton);
-
-  // 현위치 표기를 위한 함수 ▼
-  let client_position = [];
-  // variable used to prevent overlapping marker for current position
-  let currentUse = true;
-  const userInitialLocation = new naver.maps.LatLng(initialLat, initialLng);
-  // put a marker of the user's current location only when the location is taken successfully
-  if (currentUse && currentMarker) {
-    marker = new naver.maps.Marker({
-      map: map,
-      position: userInitialLocation,
-      title: "내 위치",
-      icon: {
-        content:
-          '<div class="current_marker_out"><div class="current_marker_in"></div></div>',
-        anchor: new naver.maps.Point(15, 15),
-      },
-    });
-    // preventing overlapping markers
-    if (client_position.length == 0) {
-      client_position.push(marker);
-    } else {
-      let pre_marker = client_position.splice(0, 1);
-      pre_marker[0].setMap(null);
-    }
-    currentUse = false;
-  }
-  map.setZoom(16, false);
-  map.panTo(userInitialLocation);
-  console.log(currentUse);
-
-  // 현위치 crosshair 아이콘 클릭시 이동
-  $("#current").on("click", async function () {
-    let result;
-    try {
-      result = await geoLocation();
-      const currentLat = result.coords.latitude;
-      const currentLng = result.coords.longitude;
-      let currentLatLng = new naver.maps.LatLng(currentLat, currentLng);
-      if (currentUse) {
-        marker = new naver.maps.Marker({
-          map: map,
-          position: currentLatLng,
-          title: "내 위치",
-          icon: {
-            content:
-              '<div class="current_marker_out"><div class="current_marker_in"></div></div>',
-            anchor: new naver.maps.Point(15, 15),
-          },
-        });
-        if (client_position.length == 0) {
-          client_position.push(marker);
-        } else {
-          let pre_marker = client_position.splice(0, 1);
-          pre_marker[0].setMap(null);
-        }
-        currentUse = false;
-      }
-      map.setZoom(16, false);
-      map.panTo(currentLatLng);
-    } catch (err) {
-      alert(err);
-    }
-  });
-
   // data load from mongodb ▼
   $.ajax({
     url: "/clinic",
     type: "GET",
   }).done((response) => {
     if (response.message !== "success") return;
-    const clinicData = response.data.filter((el) => el.sort == "의원");
 
-    postCodeSearch(clinicData);
+    const clinicData = response.data;
+    // const clinicData = response.data.filter((el) => el.sort == "의원");
+
+    // 사용자 위치를 중심으로 맵을 로드하고 마커 찍기
+    mapOptions = {
+      center: new naver.maps.LatLng(initialLat, initialLng),
+      zoom: 15,
+      minZoon: 7,
+      zoomControl: false,
+      mapTypeControl: false,
+      logoControl: false,
+      mapDataControl: false,
+      pinchZoon: true,
+      tileTransition: true,
+      zoomControlOptions: {
+        position: naver.maps.Position.RIGHT_CENTER,
+        style: naver.maps.ZoomControlStyle.SMALL,
+      },
+      mapTypeControlOptions: {
+        position: naver.maps.Position.LEFT_BOTTOM,
+      },
+    };
+    map = new naver.maps.Map("map", mapOptions);
+    // zoomControl 생성
+    const zoomControlWrap = document.getElementById("zoomControlWrap");
+    const zoomInButton = document.createElement("div");
+    zoomInButton.setAttribute("id", "zoomInIconDiv");
+    const zoomOutButton = document.createElement("div");
+    zoomOutButton.setAttribute("id", "zoomOutIconDiv");
+    const zoomInIcon = `<i class="fa-solid fa-plus"></i>`;
+    const zoomOutIcon = `<i class="fa-solid fa-minus"></i>`;
+
+    zoomInButton.addEventListener("click", (e) => {
+      map.setZoom(map.getZoom() + 1, true);
+    });
+    zoomOutButton.addEventListener("click", (e) => {
+      map.setZoom(map.getZoom() - 1, true);
+    });
+
+    zoomInButton.innerHTML = zoomInIcon;
+    zoomOutButton.innerHTML = zoomOutIcon;
+    zoomControlWrap.appendChild(zoomInButton);
+    zoomControlWrap.appendChild(zoomOutButton);
+
+    // 현위치 표기를 위한 함수 ▼
+    let client_position = [];
+    // variable used to prevent overlapping marker for current position
+    let currentUse = true;
+    const userInitialLocation = new naver.maps.LatLng(initialLat, initialLng);
+    // put a marker of the user's current location only when the location is taken successfully
+    if (currentUse && currentMarker) {
+      marker = new naver.maps.Marker({
+        map: map,
+        position: userInitialLocation,
+        title: "내 위치",
+        icon: {
+          content:
+            '<div class="current_marker_out"><div class="current_marker_in"></div></div>',
+          anchor: new naver.maps.Point(15, 15),
+        },
+      });
+      // preventing overlapping markers
+      if (client_position.length == 0) {
+        client_position.push(marker);
+      } else {
+        let pre_marker = client_position.splice(0, 1);
+        pre_marker[0].setMap(null);
+      }
+      currentUse = false;
+    }
+    map.setZoom(15, false);
+    map.panTo(userInitialLocation);
+    console.log(currentUse);
+
+    // 현위치 crosshair 아이콘 클릭시 이동
+    $("#current").on("click", function () {
+      postCodeSearch(clinicData, initialLat, initialLng);
+      try {
+        const currentLat = initialLat;
+        const currentLng = initialLng;
+        let currentLatLng = new naver.maps.LatLng(currentLat, currentLng);
+        if (currentUse) {
+          marker = new naver.maps.Marker({
+            map: map,
+            position: currentLatLng,
+            title: "내 위치",
+            icon: {
+              content:
+                '<div class="current_marker_out"><div class="current_marker_in"></div></div>',
+              anchor: new naver.maps.Point(15, 15),
+            },
+          });
+          if (client_position.length == 0) {
+            client_position.push(marker);
+          } else {
+            let pre_marker = client_position.splice(0, 1);
+            pre_marker[0].setMap(null);
+          }
+          currentUse = false;
+        }
+        map.setZoom(15, false);
+        map.panTo(currentLatLng);
+      } catch (err) {
+        alert(err);
+      }
+    });
+
+    postCodeSearch(clinicData, initialLat, initialLng);
 
     // 마커 클릭시 인포윈도우 띄우는 핸들러
     const getClickHandler = (i) => () => {
@@ -173,32 +176,43 @@ $(async function () {
         target.location.coordinates[1],
         target.location.coordinates[0]
       );
-
-      let marker = new naver.maps.Marker({
-        map: map,
-        position: latlng,
-        icon: {
-          content: `<div class="marker"><img id="marker_m_img" src="/images/m_marker.png" /></div>`,
-          anchor: new naver.maps.Point(11, 11), // marker의 너비와 높이의 절반으로 설정하기
-        },
-      });
+      if (target.sort == "의원") {
+        let markerM = new naver.maps.Marker({
+          map: map,
+          position: latlng,
+          icon: {
+            content: `<div class="marker"><img id="marker_m_img" src="/images/m_marker.png" /></div>`,
+            anchor: new naver.maps.Point(11, 11), // marker의 너비와 높이의 절반으로 설정하기
+          },
+        });
+        markerList.push(markerM);
+      } else {
+        let markerKM = new naver.maps.Marker({
+          map: map,
+          position: latlng,
+          icon: {
+            content: `<div class="marker"><img id="marker_m_img" src="/images/km_marker.png" /></div>`,
+            anchor: new naver.maps.Point(11, 11), // marker의 너비와 높이의 절반으로 설정하기
+          },
+        });
+        markerList.push(markerKM);
+      }
 
       // clinic marker infowindow content setup
       const content = `<div class="infowindow_wrap">
       <div class="infowindow_title">${target.title}</div>
       <div class="infowindow_department">${target.department}</div>
       <div class="infowindow_address_road">${target.address_road}</div>
-      <div class="infowindow_contact"><a id="contact" onclick="phoneCall()">${target.contact}<div class="contact_copy"><i class="fa-solid fa-phone"></i></div></a></div>
+      <div class="infowindow_contact contact"><a class="phone-num" onclick="phoneCall()">${target.contact}<div class="contact_copy"><i class="fa-solid fa-phone"></i></div></a></div>
       </div>`;
 
       const infowindow = new naver.maps.InfoWindow({
         content: content,
         backgroundColor: "#00ff0000",
         borderColor: "#00ff0000",
-        anchorSize: new naver.maps.Size(20, 20),
+        anchorSize: new naver.maps.Size(20, 10),
       });
 
-      markerList.push(marker);
       infowindowList.push(infowindow);
     }
 
@@ -291,11 +305,31 @@ async function geoLocation() {
     function onGeoSuccess(position) {
       resolve(position);
     }
-    function onGeoFail() {
-      reject("위치정보를 받아오지 못했습니다.");
+    // function onGeoFail() {
+    //   reject("위치정보를 받아오지 못했습니다.");
+    // }
+    function onGeoFail(error) {
+      // 실패했을때 실행
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          reject("위치정보 허용을 차단하셨습니다.");
+          break;
+
+        case error.POSITION_UNAVAILABLE:
+          reject("위치 정보를 받아오지 못했습니다.");
+          break;
+
+        case error.TIMEOUT:
+          reject("위치 정보를 받아오지 못했습니다.");
+          break;
+
+        case error.UNKNOWN_ERROR:
+          reject("일시적인 오류로 위치 정보를 확인할 수 없습니다.");
+          break;
+      }
     }
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoFail);
+      navigator.geolocation.watchPosition(onGeoSuccess, onGeoFail);
     } else {
     }
   });
@@ -303,7 +337,18 @@ async function geoLocation() {
   return result;
 }
 
+const listBtn = document.querySelector("#show-list-btn");
+const searchedClinicList = document.getElementById("menu_wrap");
+
 function highlightMarker(lat, lng) {
+  const mediaQuery480 = window.matchMedia("(max-width: 480px)");
+  if (mediaQuery480.matches) {
+    searchedClinicList.style.display = "none";
+    listBtn.style.display = "flex";
+  } else {
+    listBtn.style.display = "flex";
+  }
+
   for (let i = 0, ii = markerList.length; i < ii; i++) {
     if (lat == markerList[i].position.y && lng == markerList[i].position.x) {
       const marker = markerList[i];
@@ -313,6 +358,7 @@ function highlightMarker(lat, lng) {
       } else {
         infowindow.open(map, marker); // infowindow를 map위에, marker 위치에 표시한다
       }
+      map.setZoom(15, false);
       map.panTo(
         new naver.maps.LatLng(
           markerList[i].position.y,
@@ -335,86 +381,33 @@ modal.addEventListener("click", (e) => {
   }
 });
 
-// function copyToClipBoard() {
-//   const contactToCopy = document.getElementById("contact");
-//   window.navigator.clipboard
-//     .writeText(contactToCopy.innerText.replace(/-/g, ""))
-//     .then(() => {
-//       const notification = document.getElementById("notification-container");
-//       notification.classList.add("show");
-//       setTimeout(() => {
-//         notification.classList.remove("show");
-//       }, 2000);
-//     });
-// }
-
 function closeSearchedAreaList() {
-  document.getElementById("menu_wrap").style.display = "none";
+  searchedClinicList.style.display = "none";
+  listBtn.style.display = "flex";
+}
+
+function showClinicList() {
+  searchedClinicList.style.display = "flex";
+  listBtn.style.display = "none";
 }
 
 function phoneCall() {
-  const clinicContact = document.getElementById("contact").innerText;
+  const clinicContact = document.querySelector(".contact").innerText;
   location.href = "tel:" + clinicContact;
   console.log(clinicContact);
 }
 
-// async function locateUserOnMap() {
-//   let result;
-//   try {
-//     result = await geoLocation();
-//     initialLat = result.coords.latitude;
-//     initialLng = result.coords.longitude;
-//     currentMarker = true;
-//   } catch (err) {
-//     alert(err);
-//     initialLat = 37.5665;
-//     initialLng = 126.9779;
-//     currentMarker = false;
-//   }
-
-//   mapOptions = {
-//     center: new naver.maps.LatLng(initialLat, initialLng),
-//     zoom: 16,
-//     minZoon: 7,
-//     zoomControl: true,
-//     mapTypeControl: true,
-//     pinchZoon: true,
-//     tileTransition: true,
-//     zoomControlOptions: {
-//       position: naver.maps.Position.RIGHT_CENTER,
-//       style: naver.maps.ZoomControlStyle.SMALL,
-//     },
-//     mapTypeControlOptions: {
-//       position: naver.maps.Position.BOTTOM_RIGHT,
-//     },
-//   };
-//   map = new naver.maps.Map("map", mapOptions);
-
-//   let client_position = [];
-//   // variable used to prevent overlapping marker for current position
-//   let currentUse = true;
-//   const userInitialLocation = new naver.maps.LatLng(initialLat, initialLng);
-//   // put a marker of the user's current location only when the location is taken successfully
-//   if (currentUse && currentMarker) {
-//     marker = new naver.maps.Marker({
-//       map: map,
-//       position: userInitialLocation,
-//       title: "내 위치",
-//       icon: {
-//         content:
-//           '<div class="current_marker_out"><div class="current_marker_in"></div></div>',
-//       },
-//     });
-//     // preventing overlapping markers
-//     if (client_position.length == 0) {
-//       client_position.push(marker);
-//     } else {
-//       let pre_marker = client_position.splice(0, 1);
-//       pre_marker[0].setMap(null);
-//     }
-//     currentUse = false;
-//   }
-//   map.setZoom(16, false);
-//   map.panTo(userInitialLocation);
-//   console.log(currentUse);
-// }
+/*
+function copyToClipBoard() {
+  const contactToCopy = document.getElementById("contact");
+  window.navigator.clipboard
+    .writeText(contactToCopy.innerText.replace(/-/g, ""))
+    .then(() => {
+      const notification = document.getElementById("notification-container");
+      notification.classList.add("show");
+      setTimeout(() => {
+        notification.classList.remove("show");
+      }, 2000);
+    });
+}
+*/

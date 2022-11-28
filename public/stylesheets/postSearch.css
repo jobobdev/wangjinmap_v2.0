@@ -17,24 +17,20 @@
 }
 
 #menu_wrap {
+  /* 화면 너비 480px 이하 */
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%; /* 구식 브라우저를 위한 대비책(fallback) */
-  max-width: 480px;
-  min-width: 240px;
-  height: fit-content;
-  max-height: 216px;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   background-color: white;
-  z-index: 10000;
+  z-index: 9999;
   display: none;
   flex-direction: column;
   align-items: center;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
@@ -42,6 +38,7 @@
 #searchedAreaPlaceList {
   height: 100%;
   width: 100%;
+  overflow-y: auto;
 }
 
 #searchedAreaPlaceList_title {
@@ -51,87 +48,185 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 48px;
   background-color: white;
-  box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.15);
-
   z-index: 10000;
 }
 
-#searched_list_close {
-  font-size: 20px;
+.searched_list_close {
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 30px;
   cursor: pointer;
+  color: #555;
 }
 
+.hidden_x {
+  color: rgba(0, 0, 0, 0);
+}
 .searched-data-length {
-  text-align: center;
-  height: 36px;
-  width: 80%;
+  height: 48px;
   display: flex;
   align-items: center;
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.7);
-  padding-left: 20px;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
+/* 병원 리스트 검색 기준 주소 표시 div */
+
+#searchedAreaPlaceList_addr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background-color: #f1f2f3;
+  font-size: 12px;
+  font-weight: 400;
+  color: #555;
+}
+
+.searched-addr-left {
+  margin-left: 10px;
+}
+.fa-location-arrow {
+  margin-left: 4px;
+}
+.searched-addr-right {
+  margin-right: 10px;
+}
+
+/* 병원 리스트 검색목록 버튼 */
+#show-list-btn {
+  display: flex;
+  position: absolute;
+  cursor: pointer;
+  left: 0;
+  right: 0;
+  bottom: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  padding: 12px;
+  border-radius: 16px;
+  border: 2px solid #3d84eb;
+  background-color: white;
+  z-index: 9999;
+  font-size: 18px;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+.fa-list-ul {
+  margin-right: 8px;
+}
+.list-num {
+  font-weight: 900;
+  color: #3d84eb;
+  margin-left: 8px;
+}
+
+/* 병원 리스트 검색목록 아이템 */
 .searchedAreaPlaceItem {
   position: relative;
   height: auto;
-  width: 100%;
+  width: calc(100% - 32px);
+  display: grid;
+  grid-template-columns: 80% 20%;
+  align-items: center;
   box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.15);
   overflow: hidden;
+
+  padding: 16px;
+}
+
+.searchedAreaPlaceItem:hover {
+  background-color: #f2f6fb;
+}
+
+.searched-item-info {
+  overflow-wrap: break-word;
+}
+
+.searched-item-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  width: 100%;
+}
+
+.searched-item-btn-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-map {
+  color: #3d84eb;
+  font-size: 20px;
 }
 
 .searchedAreaPlace_info {
-  padding: 8px 20px;
+  margin-right: 0;
 }
 .searchedAreaPlace_info_title {
   font-size: 16px;
   font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.searchedAreaPlace_info_department {
+  font-size: 14px;
+  color: #666;
+  font-weight: 400;
   margin-bottom: 2px;
-  margin-top: 8px;
 }
 
 .searchedAreaPlace_info_address_road {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
   margin-bottom: 2px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
+  color: #333;
 }
 .searchedAreaPlace_info_address {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   margin-bottom: 2px;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0, 0, 0, 0.7);
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
 }
 
 .searchedAreaPlace_info_contact {
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap;
+  white-space: nowrap; */
+  display: flex;
   font-size: 14px;
-  font-weight: 500;
-  color: rgba(25, 74, 167, 0.94);
+  font-weight: 400;
+  color: #3d84eb;
   margin-bottom: 8px;
 }
-
 @media (min-width: 480px) {
   #menu_wrap {
-    top: 74px;
-    left: 12px;
-    width: 240px;
-    max-height: calc(100vh - 100px);
-    border-radius: 4px;
+    top: 0;
+    left: 0;
+    width: 410px;
+    padding: 0;
+    border-radius: 0px;
   }
 }
