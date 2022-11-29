@@ -248,10 +248,10 @@ body {
 }
 #current {
   position: absolute;
-  bottom: 76px;
+  bottom: 84px;
   right: 10px;
-  height: 32px;
-  width: 32px;
+  height: 36px;
+  width: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -273,7 +273,7 @@ body {
 }
 
 .fa-crosshairs {
-  font-size: 16px;
+  font-size: 18px;
   color: rgba(0, 0, 0, 0.6);
   z-index: 9999;
 }
@@ -360,8 +360,8 @@ body {
 /* --------------------줌컨트롤 CSS---------------------*/
 #zoomControlWrap {
   display: grid;
-  width: 32px;
-  height: 64px;
+  width: 36px;
+  height: 72px;
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: 1fr;
   justify-content: center;
@@ -397,7 +397,13 @@ body {
   justify-content: center;
   align-items: center;
 }
+.fa-plus {
+  font-size: 18px;
+}
 
+.fa-minus {
+  font-size: 18px;
+}
 /* -------------------- 미디어쿼리 ---------------------*/
 @media (max-width: 480px) {
   #search_bar_wrap {
