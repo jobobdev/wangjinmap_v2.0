@@ -55,6 +55,11 @@
       src="https://kit.fontawesome.com/a10b8ac274.js"
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.1/kakao.min.js"
+      integrity="sha384-eKjgHJ9+vwU/FCSUG3nV1RKFolUXLsc6nLQ2R1tD0t4YFPCvRmkcF8saIfOZNWf/"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body id="home">
     <div id="home-web-wrap">
@@ -239,7 +244,12 @@
           </div>
         </div>
       </div>
-
+      <a id="chat-channel-button" href="javascript:chatChannel()">
+        <img
+          src="/images/kakao_channel_cta.png"
+          alt="카카오톡으로 문의하기 버튼"
+        />
+      </a>
       <footer class="app-footer">
         <div class="gonggong-cont">
           <img class="gonggong-img" src="/images/gonggong-3.jpg" />
@@ -336,50 +346,19 @@
         </div>
       </div>
     </div>
-    <!-- Channel Plugin Scripts -->
+
     <script>
-      (function () {
-        var w = window;
-        if (w.ChannelIO) {
-          return (window.console.error || window.console.log || function () {})(
-            "ChannelIO script included twice."
-          );
-        }
-        var ch = function () {
-          ch.c(arguments);
-        };
-        ch.q = [];
-        ch.c = function (args) {
-          ch.q.push(args);
-        };
-        w.ChannelIO = ch;
-        function l() {
-          if (w.ChannelIOInitialized) {
-            return;
-          }
-          w.ChannelIOInitialized = true;
-          var s = document.createElement("script");
-          s.type = "text/javascript";
-          s.async = true;
-          s.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
-          s.charset = "UTF-8";
-          var x = document.getElementsByTagName("script")[0];
-          x.parentNode.insertBefore(s, x);
-        }
-        if (document.readyState === "complete") {
-          l();
-        } else if (window.attachEvent) {
-          window.attachEvent("onload", l);
-        } else {
-          window.addEventListener("DOMContentLoaded", l, false);
-          window.addEventListener("load", l, false);
-        }
-      })();
-      ChannelIO("boot", {
-        pluginKey: "962a8d5e-6f11-4281-8f6b-67fc046dd03b",
-      });
+      Kakao.init("9acd9571d64b210b4f9d411f2e5c9016"); // 사용하려는 앱의 JavaScript 키 입력
     </script>
-    <!-- End Channel Plugin -->
+
+    <script>
+      function chatChannel() {
+        Kakao.Channel.chat({
+          channelPublicId: "_xeQXwxj",
+        });
+      }
+    </script>
+
     <script type="text/javascript" src="/javascripts/hero.js"></script>
   </body>
 </html>

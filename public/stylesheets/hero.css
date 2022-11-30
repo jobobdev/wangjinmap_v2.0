@@ -476,6 +476,17 @@ ul {
   cursor: pointer;
 }
 
+/* kakao channel talk btn */
+#chat-channel-button {
+  position: fixed;
+  bottom: 24px;
+  right: 12px;
+}
+
+#chat-channel-button > img {
+  width: 88px;
+}
+
 /* app footer */
 .app-footer {
   width: 100%;
