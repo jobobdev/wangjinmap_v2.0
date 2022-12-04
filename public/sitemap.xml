@@ -13,15 +13,11 @@
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://www.connectvillages.com/map/clinics</loc>
+  <loc>https://www.connectvillages.com/map</loc>
   <lastmod>2022-11-22T02:11:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
-<url>
-  <loc>https://www.connectvillages.com/map/clinics-km</loc>
-  <lastmod>2022-11-22T02:11:42+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
+
 
 
 </urlset>

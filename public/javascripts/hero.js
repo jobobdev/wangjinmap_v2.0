@@ -5,7 +5,7 @@ shareButton.addEventListener("click", async () => {
     await navigator.share({
       title: "왕진병원 찾기, 똑똑의사!",
       text: "왕진이 필요하다면 똑똑의사를 찾아주세요.",
-      url: "",
+      url: "https://www.connectvillages.com",
     });
     console.log("공유 성공");
   } catch (e) {
